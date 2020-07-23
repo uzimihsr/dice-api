@@ -25,7 +25,7 @@ func TestDiceGet01(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", DiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/", nil)
+	request := httptest.NewRequest("GET", "/", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -56,7 +56,7 @@ func TestDiceGet02(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", DiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/?faces=12", nil)
+	request := httptest.NewRequest("GET", "/?faces=12", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -87,7 +87,7 @@ func TestDiceGet03(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", DiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/?faces=-12", nil)
+	request := httptest.NewRequest("GET", "/?faces=-12", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -118,7 +118,7 @@ func TestDiceGet04(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", DiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/?faces=asdf", nil)
+	request := httptest.NewRequest("GET", "/?faces=asdf", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -142,7 +142,7 @@ func TestCheatDiceGet01(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat", nil)
+	request := httptest.NewRequest("GET", "/cheat", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -173,7 +173,7 @@ func TestCheatDiceGet02(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat?number=4", nil)
+	request := httptest.NewRequest("GET", "/cheat?number=4", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -204,7 +204,7 @@ func TestCheatDiceGet03(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat?faces=12", nil)
+	request := httptest.NewRequest("GET", "/cheat?faces=12", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -235,7 +235,7 @@ func TestCheatDiceGet04(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat?faces=-12", nil)
+	request := httptest.NewRequest("GET", "/cheat?faces=-12", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -266,7 +266,7 @@ func TestCheatDiceGet05(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat?faces=asdf", nil)
+	request := httptest.NewRequest("GET", "/cheat?faces=asdf", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -290,7 +290,7 @@ func TestCheatDiceGet06(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("GET", "/cheat?number=asdf", nil)
+	request := httptest.NewRequest("GET", "/cheat?number=asdf", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -314,7 +314,7 @@ func TestDiceNotFound01(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", DiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("POST", "/", nil)
+	request := httptest.NewRequest("POST", "/", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
@@ -338,7 +338,7 @@ func TestDiceNotFound02(t *testing.T) {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cheat", CheatDiceHandler(m))
 	writer := httptest.NewRecorder()
-	request, _ := http.NewRequest("POST", "/cheat", nil)
+	request := httptest.NewRequest("POST", "/cheat", nil)
 	mux.ServeHTTP(writer, request)
 
 	// check
